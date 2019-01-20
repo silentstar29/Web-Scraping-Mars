@@ -5,7 +5,7 @@ import time
 from splinter import Browser
 
 def init_browser():
-    executable_path = {"executable_path": "C:/Users/aigul/Downloads/Web_Scraping_NASA_HW/chromedriver"}
+    executable_path = {"executable_path": "chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
 def scrape():
