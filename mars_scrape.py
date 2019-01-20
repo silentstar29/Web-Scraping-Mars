@@ -10,7 +10,7 @@ def init_browser():
 
 def scrape():
     browser = init_browser()
-    # create surf_data dict that we can insert into mongo
+    # create mars_data dict that we can insert into mongo
     mars_data = {}
 
     
