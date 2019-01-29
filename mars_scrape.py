@@ -104,30 +104,14 @@ def scrape():
 # Add the Mars facts table to the dictionary
     mars_data["facts_table"] = facts_table
 
-    # # Mars Hemispheres
-
-    mars_hem_url= "https://usgs.gov/"
-    browser.visit(mars_hem_url)
-
-    html = browser.html
-    soup = BeautifulSoup(html, 'html.parser')
-
-    mars_head=soup.find('h1', class_="page-header").text
-    print(mars_head)
-
-    time.sleep(3)
-
-    mars_hem=soup.find('p', class_="alert alert-danger").text
-    print(mars_hem)
-
-#Add USGS info to the dictionary:
-    mars_data["mars_head"]= mars_head
-    mars_data["mars_hem"]= mars_hem
-
+    # # Mars Hemispheres: Alternative Image from JPL.nasa.gov
     
     mars_url="https://www.jpl.nasa.gov/spaceimages/search_grid.php?sort=target&instrument=Wide+Field+Planetary+Camera+2&currentpage=3"
     browser.visit(mars_url)
-
+    
+    html = browser.html
+    soup = BeautifulSoup(html, 'html.parser')
+    
     button= browser.click_link_by_partial_href('PIA01252')
     time.sleep(3)
     button= browser.click_link_by_partial_text('jpg')
@@ -138,6 +122,7 @@ def scrape():
 
     # Add the alternative image url to the dictionary
     mars_data["mars_hemispheres_image_url"] = mars_hemispheres_image_url
+    
     browser.quit()
 # Return the dictionary
     return mars_data
